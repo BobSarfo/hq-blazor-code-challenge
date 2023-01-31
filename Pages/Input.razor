@@ -1,0 +1,90 @@
+@page "/inputs"
+@using System.Globalization
+<style>
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+</style>
+<h1>Input</h1>
+
+<p>You typed: @_text</p>
+<div class="hq-inputs">
+    <input type="text" placeholder="Type something" @bind-value="@_input">
+</div>
+
+
+
+<select @bind="@_month">
+    @if (@_months != null)
+    {
+        @for (int i = 0; i < @_months.Count(); i++)
+        {
+            <option value="@i">@_months[i]</option>
+        }
+    }
+</select>
+
+<button class="btn btn-primary" @onclick="Show">Click me</button>
+
+@code {
+    private string _input;
+    private string _text;
+    private string _month { get; set; } = "Month";
+    private string _year { get; set; } = "Year";
+
+    private List<string> _months { get; set; } = new List<string>{"01","02","03","04","05","06","07","08","09","10","11","12"};
+     //private List<int> _years { get; set; } = Enumerable.Range(DateTime.Now.Year, 10).ToList();
+    
+    
+    @* 
+    public override void OnInitialized()
+    {
+        _months = new DateTimeFormatInfo().MonthNames.ToList();
+    } *@
+
+    private void Show()
+    {
+        _text = _input;
+    }
+
+  void test(int i)
+    {
+         _month = i.ToString();
+    }
+}

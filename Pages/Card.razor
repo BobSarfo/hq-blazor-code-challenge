@@ -1,0 +1,34 @@
+﻿@page "/Card"  
+<div class="flex row">
+       <div class="col d-flex justify-content-center">
+          <div class="card mb-4">
+            <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" class="card-item__chip">
+               <p>These are the values</p><br/>
+               <p>@CardName</p><br/>
+               <p>@CardNumber</p><br/>
+               <p>@ExpireYear</p><br/>
+               <p>@ExpireMonth</p><br/>
+               <p>@CVV</p>
+
+          </div>
+       </div>
+  </div>
+
+@code {
+
+    [Parameter]
+    public string CardName { get; set; }
+
+    [Parameter]
+    public string CardNumber { get; set; }
+
+    [Parameter]
+    public string ExpireYear { get; set; }
+
+    [Parameter]
+    public string ExpireMonth { get; set; }
+
+    [Parameter]
+    public string CVV { get; set; }
+
+}

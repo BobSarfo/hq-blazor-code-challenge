@@ -1,0 +1,91 @@
+﻿@page "/Form"
+
+<!-- Credit card form -->
+<section>
+    
+  <Card CardName="@_cardName" CardNumber="@_cardNumber" CVV="@_cVV" ExpireMonth="@_cxpireMonth" ExpireYear="@_cxpireYear"/>
+  <div class="flex row">
+      
+    <div class="col d-flex justify-content-center">
+      <div class="card mb-4">
+    
+        <div class="card-body">
+
+          <form> 
+
+            <!-- Card Number-->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form6Example3">Card Number</label>
+              <input @bind="@_cardNumber" @bind:event="oninput" type="text" id="form6Example3" class="form-control" />
+            </div>
+
+            <!-- Card Name -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form6Example4">Card Name</label>
+              <input @bind="_cardName" @bind:event="oninput" type="text" id="form6Example4" class="form-control" />
+            </div>
+
+            <div class="row mb-4">
+              <div class="col">
+                <div class="form-outline">
+                  <label class="form-label" for="formNameOnCard">Expiration Date</label>
+                  <select  class="form-control" @bind="@_cxpireMonth" @bind:event="oninput">
+                        @if (@_months != null)
+                        {
+                            @for (int i = 1; i < @_months.Count(); i++)
+                            {
+                                <option value="@(@i+1)">@_months[i]</option>
+                            }
+                        }
+                    </select>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-outline">
+                  <label class="form-label" for="ExpirationDate">.</label>
+                  <select class="form-control" @bind="@_cxpireYear" @bind:event="oninput">
+                        @if (@_years != null)
+                        {
+                            @for (int i = 0; i < @_years.Count(); i++)
+                            {
+                                <option value="@_years[i]">@_years[i]</option>
+                            }
+                        }
+                   </select>
+
+                </div>
+              </div>
+
+               <div class="col">
+                <div class="form-outline">
+                  <label class="form-label" for="formCVV" >CVV</label>
+                  <input @bind="_cVV" @bind:event="oninput" type="text" id="formCardNumber" class="form-control" />
+                </div>
+              </div>
+            </div>
+            
+
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Credit card form -->
+
+
+@code {
+
+    private List<string> _months { get; set; } = new List<string>{"01","02","03","04","05","06","07","08","09","10","11","12"};
+    private List<int> _years { get; set; } = Enumerable.Range(DateTime.Now.Year, 10).ToList();
+
+
+    private string _cardName = "";
+    private string _cardNumber = "";
+    private string _cVV = "";
+    private string _cxpireMonth = "";
+    private string _cxpireYear = "";
+}
