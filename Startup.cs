@@ -29,7 +29,7 @@ namespace hq_blazor_code_challenge
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<ICreditCardService,CreditCardService>();
+            services.AddScoped<ICreditCardRepository, CreditCardRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

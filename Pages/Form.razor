@@ -4,20 +4,19 @@
 <!-- Credit card form -->
 <section>
     
-  <Card CardProviderImg="@_cardProviderImg" CardName="@_cardName" CardNumber="@_cardNumber" CVV="@_cVV" ExpireMonth="@_cxpireMonth" ExpireYear="@_cxpireYear"/>
   <div class="flex row">
       
     <div class="col d-flex justify-content-center">
-      <div class="card mb-4">
-    
-        <div class="card-body">
+      <div class="card m-10">
+        <div class="card-body push-up mb-3">
+            <Card CardProviderImg="@_cardProviderImg" CardName="@_cardName" CardNumber="@_cardNumber" CVV="@_cVV" ExpireMonth="@_cxpireMonth" ExpireYear="@_cxpireYear"/>
 
           <form > 
 
             <!-- Card Number-->
             <div class="form-outline mb-4">
               <label class="form-label" for="form6Example3">Card Number</label>
-              <input @bind="@_cardNumber" @bind:event="oninput" type="number" maxlength = "16"  id="form6Example3" class="form-control" />
+              <input @bind="@_cardNumber" @bind:event="oninput" type="text" maxlength = "16"  id="form6Example3" class="form-control" />
             </div>
 
             <!-- Card Name -->
