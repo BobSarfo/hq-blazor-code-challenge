@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace hq_blazor_code_challenge.Services
 {
-    public class CreditCardService : ICreditCardService
+    public class CreditCardRepository: ICreditCardRepository
     {
         public async Task<bool> AddNewCreditCard(CreditCard creditCard)
 {

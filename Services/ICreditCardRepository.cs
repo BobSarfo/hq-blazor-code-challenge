@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace hq_blazor_code_challenge.Services
 {
-    public interface ICreditCardService
+    public interface ICreditCardRepository
     {
         public Task<bool> AddNewCreditCard(CreditCard creditCard);
     }
