@@ -3,50 +3,63 @@
        <div class="col d-flex justify-content-center">
           <div class="card mb-4">
               <div class="card-item__side -front"><div class="card-item__focus" style=""></div>
-            <div class="card-item__cover"><img
-            src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/23.jpeg"
-            class="card-item__bg"></div> <div class="card-item__wrapper"><div
-            class="card-item__top"><img
-                src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png"
-                class="card-item__chip"> <div class="card-item__type"><img
-                    src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png"
-                    alt="" class="card-item__typeImg"></div></div> <label
-                    for="cardNumber" class="card-item__number"><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem -active"> </div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem -active"> </div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem -active"> </div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span><span><div
-                    class="card-item__numberItem">#</div></span></label> <div
-                    class="card-item__content"><label for="cardName"
+                <div class="card-item__cover">
+                    <img  src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/23.jpeg"  class="card-item__bg"></div> <div class="card-item__wrapper">
+                        <div class="card-item__top"><img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" class="card-item__chip">
+                            <div class="card-item__type">
+                                <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/visa.png" alt="" class="card-item__typeImg">
+                                </div>
+                              </div> 
+                                  <label for="cardNumber" class="card-item__number">
+                            @{
+                          
+                                @for (int i = 1; i <= 16; i++)
+                                {
+
+                                     
+                                     if (i<@CardNumber.Length+1)
+                                    {
+                                        <span><div class="card-item__numberItem">@CardNumber[i-1]</div></span>
+                                        @if ( i % 4== 0)
+                                        {
+                                            <span> <div class="card-item__numberItem -active"> </div></span>                                       
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span><div class="card-item__numberItem">#</div></span>
+                                         @if (i>3 && i % 4 == 0)
+                                        {
+                                            <span> <div class="card-item__numberItem -active"> </div></span>                                       
+
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            </label>
+
+
+                     <div class="card-item__content"><label for="cardName"
                     class="card-item__info"><div class="card-item__holder">Card
-                    Holder</div> <div class="card-item__name">Full Name</div></label>
+                    Holder</div> <div class="card-item__name">@CardName</div></label>
             <div class="card-item__date"><label for="cardMonth"
                     class="card-item__dateTitle">Expires</label> <label
-                    for="cardMonth" class="card-item__dateItem"><span>MM</span></label>
+                    for="cardMonth" class="card-item__dateItem"><span>@ExpireMonth</span></label>
                 /
-                <label for="cardYear" class="card-item__dateItem"><span>YY</span></label></div></div></div></div>
-
-            <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" class="card-item__chip">
-               <p>These are the values</p><br/>
-               <p>@CardName</p><br/>
-               <p>@CardNumber</p><br/>
-               <p>@ExpireYear</p><br/>
-               <p>@ExpireMonth</p><br/>
-               <p>@CVV</p>
+                <label for="cardYear" class="card-item__dateItem">
+                    <span>@if (!string.IsNullOrEmpty(@ExpireYear))
+                        {
+                            @ExpireYear.ToString().Substring(2,2);
+                        }
+                    </span>
+                </label>
+                </div>
+            </div>
+            </div>
+            </div>
 
           </div>
        </div>
@@ -68,5 +81,7 @@
 
     [Parameter]
     public string CVV { get; set; }
+
+    private int Delay = 0;
 
 }

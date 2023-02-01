@@ -16,13 +16,13 @@
             <!-- Card Number-->
             <div class="form-outline mb-4">
               <label class="form-label" for="form6Example3">Card Number</label>
-              <input @bind="@_cardNumber" @bind:event="oninput" type="text" id="form6Example3" class="form-control" />
+              <input @bind="@_cardNumber" @bind:event="oninput" type="text" maxlength = "16"  id="form6Example3" class="form-control" />
             </div>
 
             <!-- Card Name -->
             <div class="form-outline mb-4">
               <label class="form-label" for="form6Example4">Card Name</label>
-              <input @bind="_cardName" @bind:event="oninput" type="text" id="form6Example4" class="form-control" />
+              <input @bind="_cardName" @bind:event="oninput" maxlength = "30"  type="text" id="form6Example4" class="form-control" />
             </div>
 
             <div class="row mb-4">
@@ -34,7 +34,7 @@
                         {
                             @for (int i = 1; i < @_months.Count(); i++)
                             {
-                                <option value="@(@i+1)">@_months[i]</option>
+                                <option value="@_months[i]">@_months[i]</option>
                             }
                         }
                     </select>
@@ -52,14 +52,13 @@
                             }
                         }
                    </select>
-
                 </div>
               </div>
 
                <div class="col">
                 <div class="form-outline">
                   <label class="form-label" for="formCVV" >CVV</label>
-                  <input @bind="_cVV" @bind:event="oninput" type="text" id="formCardNumber" class="form-control" />
+                  <input @bind="_cVV" @bind:event="oninput" maxlength = "4"  type="text" id="formCardNumber" class="form-control" />
                 </div>
               </div>
             </div>
