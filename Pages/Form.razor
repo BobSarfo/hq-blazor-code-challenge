@@ -1,5 +1,4 @@
 ﻿@page "/Form"
-@using hq_blazor_code_challenge.DAL.Entities
 
 <!-- Credit card form -->
 <section>
@@ -9,27 +8,31 @@
     <div class="col d-flex justify-content-center">
       <div class="card m-10">
         <div class="card-body push-up mb-3">
-            <Card CardProviderImg="@_cardProviderImg" CardName="@_cardName" CardNumber="@_cardNumber" CVV="@_cVV" ExpireMonth="@_cxpireMonth" ExpireYear="@_cxpireYear"/>
+            @*<Card CardProviderImg="@_cardProviderImg" CardName="@_cardName" CardNumber="@_cardNumber" CVV="@_cVV" ExpireMonth="@_cxpireMonth" ExpireYear="@_cxpireYear"/>*@
 
-          <form > 
+
+          
+            <EditForm @Model="@CreditCard" OnValidSubmit="HandleValidSubmit"> 
 
             <!-- Card Number-->
             <div class="form-outline mb-4">
               <label class="form-label" for="form6Example3">Card Number</label>
               <input @bind="@_cardNumber" @bind:event="oninput" type="text" maxlength = "16"  id="form6Example3" class="form-control" />
-            </div>
+              <InputText @bind-Value="@CreditCard.Number" @bind:event="oninput" maxlength = "16"  id="form6Example3" class="form-control" />
+            
+          </div>
 
             <!-- Card Name -->
             <div class="form-outline mb-4">
               <label class="form-label" for="form6Example4">Card Name</label>
-              <input @bind="_cardName"  @bind:event="oninput" maxlength = "30"  type="text" id="form6Example4" class="form-control" />
+              <InputText @bind-Value="@CreditCard.Name"  @bind:event="oninput" maxlength = "30" id="form6Example4" class="form-control" />
             </div>
 
             <div class="row mb-4">
               <div class="col">
                 <div class="form-outline">
                   <label class="form-label" for="formNameOnCard">Expiration Date</label>
-                  <select  class="form-control" @bind="@_cxpireMonth" @bind:event="oninput">
+                  <InputSelect  class="form-control" @bind-Value="@CreditCard.ExpireMonth" @bind:event="oninput">
                         @if (@_months != null)
                         {
                             @for (int i = 1; i < @_months.Count(); i++)
@@ -37,13 +40,13 @@
                                 <option value="@_months[i]">@_months[i]</option>
                             }
                         }
-                    </select>
+                    </InputSelect>
                 </div>
               </div>
               <div class="col">
                 <div class="form-outline">
                   <label class="form-label" for="ExpirationDate">.</label>
-                  <select class="form-control" placeholder="" @bind="@_cxpireYear" @bind:event="oninput">
+                  <InputSelect class="form-control" placeholder="" @bind-Value="@CreditCard.ExpireYear" @bind:event="oninput">
                         @if (@_years != null)
                         {
                             @for (int i = 0; i < @_years.Count(); i++)
@@ -51,14 +54,14 @@
                                 <option value="@_years[i]">@_years[i]</option>
                             }
                         }
-                   </select>
+                   </InputSelect>
                 </div>
               </div>
 
                <div class="col">
                 <div class="form-outline">
                   <label class="form-label" for="formCVV" >CVV</label>
-                  <input @bind="_cVV" @bind:event="oninput" maxlength = "4"  type="number" id="formCardNumber" class="form-control" />
+                  <InputNumber @bind-Value="@CreditCard.CVV" @bind:event="oninput" maxlength = "4"  type="number" id="formCardNumber" class="form-control" />
                 </div>
               </div>
             </div>
@@ -67,7 +70,7 @@
             <button class="btn btn-primary btn-lg btn-block" type="submit">
               Submit
             </button>
-          </form>
+          </EditForm>
         </div>
       </div>
     </div>
