@@ -1,5 +1,7 @@
-﻿using hq_blazor_code_challenge.DAL.Entities;
+﻿using hq_blazor_code_challenge.CustomValidators;
+using hq_blazor_code_challenge.DAL.Entities;
 using hq_blazor_code_challenge.Services;
+using System;
 using System.Threading.Tasks;
 
 namespace hq_blazor_code_challenge.Pages
@@ -24,5 +26,13 @@ namespace hq_blazor_code_challenge.Pages
         {
             await _creditCardRepository.AddNewCreditCard(CreditCard);
         }
+
+        public void ValidateCreditCard()
+        {
+
+            //CreditCardValidator.IsValidCreditCard();
+
+        }
+
     }
 }
