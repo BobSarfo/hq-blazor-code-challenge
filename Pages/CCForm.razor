@@ -17,12 +17,12 @@
                        <!-- Card Number -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form6Example3">Card Number</label>
-                        <InputText @bind-Value="@CreditCard.Number" @onkeypress="@MatchCreditCard"  type="text" maxlength = "16"  id="form6Example3" class="form-control" />
+                        <InputText @bind-Value="@CreditCard.Number" @oninput="@MatchCreditCard" OnValidSubmit="@HandleValidSubmit" type="text" maxlength = "16"  id="form6Example3" class="form-control" />
                     </div>
                       <!-- Card Name -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="form6Example4">Card Name</label>
-                        <InputText @bind-Value="@CreditCard.Name"  maxlength = "30" id="form6Example4" class="form-control" />
+                        <InputText @bind-Value="@CreditCard.Name"   @oninput="@UpdateName"  maxlength = "30" id="form6Example4" class="form-control" />
                     </div>
                     <!--Month-->
                     <div class="row mb-4">

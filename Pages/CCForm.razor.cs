@@ -23,13 +23,20 @@ namespace hq_blazor_code_challenge.Pages
 
 
 
-        public async Task HandleValidSubmit(){
+        protected async Task HandleValidSubmit(){
+
             await CreditCardRepository.AddNewCreditCard(CreditCard);
             
         }
-        
-        public void MatchCreditCard(KeyboardEventArgs args)
+
+        public void UpdateName(ChangeEventArgs args) 
         {
+            CreditCard.Name = (string)args.Value;
+        }
+        
+        public void MatchCreditCard(ChangeEventArgs args)
+        {
+            CreditCard.Number = (string)args.Value;
             if (CreditCard.Number is not null)
             {
                 var result = CreditCardValidator.IsValidCreditCard(CreditCard.Number);
