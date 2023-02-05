@@ -24,7 +24,11 @@ namespace hq_blazor_code_challenge.CustomValidators
         public static Tuple<bool, string> IsValidCreditCard(string cardNumber)
         {
             string? cardImgUrl = string.Empty;
-            cardNumber = cardNumber.Replace(" ", "").Trim();
+            if (cardNumber is not null)
+            {
+                cardNumber = cardNumber.Replace(" ", "").Trim();
+
+            }
 
             // Visa
             if (Regex.IsMatch(cardNumber, "^(4)"))

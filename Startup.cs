@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using hq_blazor_code_challenge.Services;
+using hq_blazor_code_challenge.DAL.Repositories;
 
 namespace hq_blazor_code_challenge
 {
