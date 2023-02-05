@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hq-blazor-code-challenge", "hq-blazor-code-challenge.csproj", "{89AA528C-3B6F-48C8-9706-6964AB4308AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hq-blazor-code-challengeTests", "..\hq-blazor-code-challengeTests\hq-blazor-code-challengeTests.csproj", "{CD02DF38-C0A1-41F6-B0F6-7C8489A421C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "hq-blazor-code-challengeTests", "..\hq-blazor-code-challengeTests\hq-blazor-code-challengeTests.csproj", "{CD02DF38-C0A1-41F6-B0F6-7C8489A421C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

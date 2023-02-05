@@ -7,7 +7,7 @@ namespace hq_blazor_code_challenge.DAL.Entities
 {
     public class CreditCard
     {
-        [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //[Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -26,7 +26,7 @@ namespace hq_blazor_code_challenge.DAL.Entities
 
         [Required]
         [Range(100,9999, ErrorMessage ="CVV is out of range")]
-        public string CVV { get; set; }
+        public int CVV { get; set; }
 
     }
 }
