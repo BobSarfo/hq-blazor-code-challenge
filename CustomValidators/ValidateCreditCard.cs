@@ -63,7 +63,7 @@ namespace hq_blazor_code_challenge.CustomValidators
             // Amex
             if (Regex.IsMatch(cardNumber, "^(34|37)")
                 && ((cardType & CardType.Amex) != 0))
-                return cardNumber.Length == 15;
+                return cardNumber.Replace(" ","").Length == 15;
 
             // Diners
             if (Regex.IsMatch(cardNumber, "^(300|301|302|303|304|305|36|38)")

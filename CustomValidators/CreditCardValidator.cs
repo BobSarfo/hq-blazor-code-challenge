@@ -21,15 +21,16 @@ namespace hq_blazor_code_challenge.CustomValidators
         public const string AmexUrl = "https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/amex.png";
         public const string MasterCardUrl = "https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/mastercard.png";
 
-        public static Tuple<bool, string> IsValidCreditCard(string cardNumber, out string? cardImgUrl)
+        public static Tuple<bool, string> IsValidCreditCard(string cardNumber)
         {
-   
+            string? cardImgUrl = string.Empty;
+            cardNumber = cardNumber.Replace(" ", "").Trim();
 
             // Visa
             if (Regex.IsMatch(cardNumber, "^(4)"))
             {
                 cardImgUrl = VisaUrl;
-                return new Tuple<bool, string>(cardNumber.Length == 13 || cardNumber.Length == 16, Visa);
+                return new Tuple<bool, string>(cardNumber.Replace(" ","").Length == 13 || cardNumber.Length == 16, VisaUrl);
                
             }
 
@@ -38,7 +39,7 @@ namespace hq_blazor_code_challenge.CustomValidators
             if (Regex.IsMatch(cardNumber, "^(51|52|53|54|55)"))
             {
                 cardImgUrl = MasterCardUrl;
-                return new Tuple<bool, string>(cardNumber.Length == 16, MasterCard);
+                return new Tuple<bool, string>(cardNumber.Length == 16, MasterCardUrl);
 
             }
 
@@ -46,7 +47,7 @@ namespace hq_blazor_code_challenge.CustomValidators
             if (Regex.IsMatch(cardNumber, "^(34|37)"))
             {
                 cardImgUrl = AmexUrl;
-                return new Tuple<bool, string>(cardNumber.Length == 15, Amex);   
+                return new Tuple<bool, string>(cardNumber.Length == 15, AmexUrl);   
 
             }
 
